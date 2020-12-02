@@ -16,7 +16,7 @@ if [[ $num -ge $min ]] && [[ $num -le $max ]]; then
 fi
 
 
-done < input.txt
+done < input
 
 if [[ $suma -ne 0 ]]; then
 echo $suma
