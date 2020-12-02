@@ -4,7 +4,7 @@ mult=0
 
 main(){
 	
-rev=($(cat input.txt | sort -nr ))
+rev=($(cat input | sort -nr ))
 num=${#rev[@]} 
 let num--
 index=0
