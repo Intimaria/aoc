@@ -4,7 +4,7 @@ mult=0
 
 main(){
 value=2020
-rev=($(cat input.txt | sort -rn ))
+rev=($(cat input | sort -rn ))
 length=${#rev[@]}
 for i in {0..198}
 do
