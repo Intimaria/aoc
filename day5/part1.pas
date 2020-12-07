@@ -40,15 +40,15 @@ procedure contar(v: alf; var num: longint);
 
   end;
   
-Procedure ImprimirVector (v:alf);
+procedure imprimirVector (v:alf);
   var
     i:byte;
-  Begin
+  begin
     for i:=10 downto 1 do
       write(v[i],' | ');
   end;
-Procedure max (var max: longint; num: longint);
-  Begin	
+procedure max (var max: longint; num: longint);
+  begin	
     if max < num then
       max:= num;
   end;
@@ -74,7 +74,7 @@ begin
 	    read(file_name, l);
 	end;
 	binario(s, a);
-	ImprimirVector(a);
+	imprimirVector(a);
 	writeln();
 	writeln('-----------');
     contar(a, num);
