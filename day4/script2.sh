@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-# new_input.txt contains the valid passports only (from part 1)
+# new_input.txt contains the valid passports only (processed in part 1)
 
 # outsource function to validate height
 height () {
@@ -42,7 +42,7 @@ iy=0;b=0;e=0;ey=0;he=0;ha=0;id=0
 			3) [[ ${arr[$i]} =~ ^[0-9]{9}$ ]] && id=1 || continue ;;
 			4) [[ ${arr[$i]} =~ ^[0-9]{4}$ ]] && ((  1920 <= ${arr[$i]} )) && (( ${arr[$i]} <= 2002 )) && b=1 || continue ;;
 			5) [[ ${arr[$i]} =~ ^#[a-f|0-9]{6}$ ]] && ha=1 || continue ;;
-			6)  eyes=$(awk (/amb/ || /blu/ || /brn/ || /gry/ || /grn/ || /hzl/ || /oth/ ) <<<  ${associative[ecl]} ) # '' al () de awk
+			6)  eyes=$(awk '(/amb/ || /blu/ || /brn/ || /gry/ || /grn/ || /hzl/ || /oth/ )'' <<<  "${associative[ecl]}" ) 
             [[ ! -z $eyes ]] && ey=1  || continue;;
 		esac
 
