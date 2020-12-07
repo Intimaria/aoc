@@ -1,9 +1,10 @@
 #!/usr/local/bin/bash
+
 index=0
 trees=0
+while read -r line; do
 length=$( echo ${line[*]} | wc -c )
 let length--
-while read -r line; do
 	if [[ $index -ge $length ]]; then
 		let index=index-$length
 	fi
