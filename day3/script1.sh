@@ -1,10 +1,11 @@
 #!/usr/local/bin/bash
 
+length=$( head -n 1 input | wc -c )
+let length--
 index=0
 trees=0
 while read -r line; do
-length=$( echo ${line[*]} | wc -c )
-let length--
+
 	if [[ $index -ge $length ]]; then
 		let index=index-$length
 	fi
@@ -12,5 +13,5 @@ let length--
 		let trees++
 	fi
 	index=$(($index+3))
-done < input3.txt 
+done < input 
 echo "$trees"
