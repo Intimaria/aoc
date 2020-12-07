@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
-# I already know the length of the line from part 1 (saves time)
-length=31
+length=$( head -n 1 input | wc -c )
+let length--
 index=0
 trees=0
 
@@ -9,13 +9,13 @@ find() {
 # second condition in while makes process faster dunno why
 while read -r line  && [[ $2 -lt $length ]]; do
 		if [[ $index -ge $length ]]; then
-			let index=index-$length
+			let "index=index-$length"
 		fi
 		if [[ ${line:$index:1} == '#' ]]; then	
 			let trees++
 		fi
 	index=$(($index+$1))	
-done < input3.txt 
+done < input
 echo "$trees" 
 }
 
@@ -24,13 +24,13 @@ find_two() {
 file=$( cat input3.txt | sed -n 'p;n' );
 for line in ${file[@]}; do
 		if [[ $index -ge $length ]]; then
-			let index=index-$length
+			let "index=index-$length"
 		fi
 		if [[ ${line:$index:1} == '#' ]]; then	
 			let trees++
 		fi
 	index=$(($index+$1))
-done < input3.txt 
+done < input
 echo "$trees" 
 }
 
