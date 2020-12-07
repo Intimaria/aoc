@@ -80,7 +80,16 @@ procedure max (var max: longint; num: longint);
     if max < num then
       max:= num;
   end;
-  
+
+// useful for debugging
+procedure imprimirAsientos (v:asientos);
+  var
+    i:integer;
+  begin
+    for i:=1 to 815 do
+      write(v[i],' | ');
+  end;
+
 function compararAsientos( a:asientos; a2: asientos): integer;
 var i:integer;
 begin
@@ -103,7 +112,6 @@ var
   ind: integer;
   asi: asientos;
   asi2: asientos;
-  miAsiento: integer;
 begin
   ind:=1;
   num:=0;
@@ -113,13 +121,11 @@ begin
   reset(file_name);
   while not(eof(file_name)) do begin
   	read(file_name, l);
-  	i:=1;
 	  for i:= 10 downto 1 do begin
 	    s[i]:=l;
 	    read(file_name, l);
 	  end;
 	  binario(s, a);
-	  writeln();
     contar(a, num);
     inicializar(a);
     ind:=ind+1;
@@ -127,7 +133,6 @@ begin
     num:=0;
   end;
   ordenarVector(asi);
-  miAsiento:=compararAsientos(asi, asi2);
-  writeln('mi asiento es', miAsiento);
+  writeln('mi asiento es', compararAsientos(asi, asi2));
   close(file_name);
   end.
