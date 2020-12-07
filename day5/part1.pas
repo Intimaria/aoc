@@ -64,7 +64,7 @@ begin
   maxim:=-1; 
   num:=0;
   inicializar(a);
-  assign(file_name, 'input5');
+  assign(file_name, 'input');
   reset(file_name);
   while not(eof(file_name)) do begin
   	read(file_name, l);
