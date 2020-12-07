@@ -1,11 +1,20 @@
-program leer;
+program leer2;
 uses
   math;
+const 
+{from preprocessing 
+count=0;while not(eof(file)) do begin 
+read(file, line); 
+writeln(line);
+count:=count+1; 
+end; etc. gave me these values}
+  dimF = 815; 
+  firstNum = 96;
 type
   f = file of char;
   alf = array [1..10] of byte;
   sal = array [1..10] of char;
-  asientos = array [1..815] of integer;
+  asientos = array [1..dimF] of integer;
 
 procedure inicializar(var v: alf);
   var
@@ -19,8 +28,8 @@ procedure iniAsientos(var v: asientos);
   var
     i: integer;
   Begin
-    for i:=1 to 815 do
-		v[i]:=i+95;
+    for i:=1 to dimF do
+		v[i]:=i+firstNum;
   end;
 
 procedure binario(s: sal; var v: alf);
@@ -49,11 +58,11 @@ procedure contar(v: alf; var num: longint);
 
   end;
   
-procedure OrdenarVector (var v: asientos);
+procedure ordenarVector (var v: asientos);
 var
 	i, j, elem: integer;
 begin
-	for i:= 2 to 815 do
+	for i:= 2 to dimF do
 	begin
 		elem:= v[i];
 		j:=i-1;
@@ -66,24 +75,8 @@ begin
 	end;
 end;
 
-Procedure ImprimirAsientos (v:asientos);
-  var
-    i:integer;
-  Begin
-    for i:=1 to 815 do
-      write(v[i],' | ');
-  end;
-  
-Procedure ImprimirVector (v:alf);
-  var
-    i:byte;
-  Begin
-    for i:=10 downto 1 do
-      write(v[i],' | ');
-  end;
-  
-Procedure max (var max: longint; num: longint);
-  Begin	
+procedure max (var max: longint; num: longint);
+  begin	
     if max < num then
       max:= num;
   end;
@@ -91,12 +84,12 @@ Procedure max (var max: longint; num: longint);
 function compararAsientos( a:asientos; a2: asientos): integer;
 var i:integer;
 begin
-	for i:= 1 to 815 do begin 
-	    if a[i] > a2[i] then begin
-			writeln('encontre', a2[i]);
-			compararAsientos:=a2[i];
-			exit;
-		end;
+	for i:= 1 to dimF do begin 
+	  if a[i] > a2[i] then begin
+		  writeln('encontre', a2[i]);
+		 	compararAsientos:=a2[i];
+		 	exit;
+	  end;
 	end;
 end;
 
@@ -121,19 +114,19 @@ begin
   while not(eof(file_name)) do begin
   	read(file_name, l);
   	i:=1;
-	for i:= 10 downto 1 do begin
+	  for i:= 10 downto 1 do begin
 	    s[i]:=l;
 	    read(file_name, l);
-	end;
-	binario(s, a);
-	writeln();
+	  end;
+	  binario(s, a);
+	  writeln();
     contar(a, num);
     inicializar(a);
     ind:=ind+1;
     asi[ind]:=num;
     num:=0;
   end;
-  OrdenarVector(asi);
+  ordenarVector(asi);
   miAsiento:=compararAsientos(asi, asi2);
   writeln('mi asiento es', miAsiento);
   close(file_name);
