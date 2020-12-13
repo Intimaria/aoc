@@ -43,7 +43,7 @@ iy=0;b=0;e=0;ey=0;he=0;ha=0;id=0
 			4) [[ ${arr[$i]} =~ ^[0-9]{4}$ ]] && ((  1920 <= ${arr[$i]} )) && (( ${arr[$i]} <= 2002 )) && b=1 || continue ;;
 			5) [[ ${arr[$i]} =~ ^#[a-f|0-9]{6}$ ]] && ha=1 || continue ;;
 			6)  eyes=$(awk (/amb/ || /blu/ || /brn/ || /gry/ || /grn/ || /hzl/ || /oth/ ) <<<  "${associative[ecl]}" ) # awk '()'
-            [[ ! -z $eyes ]] && ey=1  || continue;;
+                [[ ! -z $eyes ]] && ey=1  || continue;;
 		esac
 
 	[[ iy -eq 1 ]] && [[ e -eq 1 ]] && [[ b -eq 1 ]] && [[ he -eq 1 ]] && [[ ey -eq 1 ]] && [[ ha -eq 1 ]] && [[ id -eq 1 ]] && count=$((count+1)) 
